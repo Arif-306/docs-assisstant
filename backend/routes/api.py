@@ -1,8 +1,8 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException
 from fastapi.responses import JSONResponse
 import os
-from app.services.ingest_service import ingest_pdf
-from app.services.qa_service import answer_question
+from backend.services.ingest_service import ingest_pdf
+from backend.services.qa_service import answer_question
 from app.models.model_manager import ModelManager
 from app.core import config
 
@@ -83,3 +83,14 @@ async def summarize(payload: dict):
 @router.get('/health')
 async def health_check():
     return {"status": "ok", "message": "AlphaDoc Assistant is running"}
+
+
+
+from fastapi import APIRouter
+
+router = APIRouter()
+
+@router.get("/")
+def read_root():
+    return {"msg": "Hello from API"}
+
